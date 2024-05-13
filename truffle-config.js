@@ -42,7 +42,7 @@
  */
 
 require('dotenv').config();
-const { MNEMONIC, PROJECT_ID } = process.env;
+const { MNEMONIC, POLYGON_MAINNET_PROJECT_ID, POLYGON_AMOY_PROJECT_ID } = process.env;
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
@@ -89,9 +89,16 @@ module.exports = {
     //   timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
     //   skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
     // },
-    sepolia: {
-      provider: () => new HDWalletProvider(MNEMONIC, `https://eth-sepolia.g.alchemy.com/v2/${PROJECT_ID}`),
-      network_id: 11155111,
+    amoy: {
+      provider: () => new HDWalletProvider(MNEMONIC, `https://polygon-amoy.g.alchemy.com/v2/${POLYGON_AMOY_PROJECT_ID}`),
+      network_id: 80002,
+      confirmations: 2,
+      timeoutBlocks: 10000,
+      skipDryRun: true
+    },
+    polygon: {
+      provider: () => new HDWalletProvider(MNEMONIC, `https://polygon-mainnet.g.alchemy.com/v2/${POLYGON_MAINNET_PROJECT_ID}`),
+      network_id: 137,
       confirmations: 2,
       timeoutBlocks: 10000,
       skipDryRun: true

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 import {IERC20} from "./IERC20.sol";
@@ -13,7 +14,7 @@ contract BasedCoin is IERC20 {
     constructor() {
         name = "Based Coin";
         symbol = "BASED";
-        decimals = 2;
+        decimals = 4;
         _totalSupply = 10000 * 10 ** uint256(decimals);
         _balances[msg.sender] = _totalSupply;
     }
